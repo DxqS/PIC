@@ -13,8 +13,7 @@ setup(
     description='图片合成 API',
     keywords=[
         'PIL',
-        'pillow',
-        'merge'
+        'pillow'
     ]
 )
 
