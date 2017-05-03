@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='PICC',
-    version='0.0.1',
+    version='0.0.4',
     packages=find_packages(),
     install_requires=['pillow'],
     url='https://github.com/DxqS/PIC',
