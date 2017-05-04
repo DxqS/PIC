@@ -1,2 +1,0 @@
-# PIC
-Python Image Composition
