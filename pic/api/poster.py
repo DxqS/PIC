@@ -49,7 +49,7 @@ class Poster(object):
         x = (self.size[0] - self.textsize(text, size, ft, mode)[0]) / 2 if horizon else position[0]
         y = (self.size[1] - self.textsize(text, size, ft, mode)[1]) / 2 if vertical else position[1]
 
-        draw.text([x, y], unicode(text, 'utf-8'), font=ft, fill=color)
+        draw.text([x, y], text, font=ft, fill=color)
         return True
 
     def add_mul_text(self, text, font=None, color="#000000", position=None, mode=None, spacing=4, align="center"):
@@ -58,7 +58,7 @@ class Poster(object):
 
     def textsize(self, text, font_size, font=None, mode=None):
         ft = ImageFont.truetype(font, font_size) if font else None
-        return ImageDraw.ImageDraw(self.back, mode).textsize(unicode(text), font=ft)
+        return ImageDraw.ImageDraw(self.back, mode).textsize(text, font=ft)
 
     def save(self):
         self.poster.save(self.save_path)
