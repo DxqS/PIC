@@ -44,7 +44,6 @@ pic: Python Image Composition用 Python 实现图片合成
 
     # 导入模块
     from PIC import *
-    # 初始化机器人，扫码登陆
     poster = Poster()
 
 添加图片::
