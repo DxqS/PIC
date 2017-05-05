@@ -42,23 +42,25 @@ class Poster(object):
         # back.save(self.save_path)
         return True
 
-    def add_text(self, text, font=None, color="#000000", position=None, vertical=False, horizon=False):
-        draw = ImageDraw.Draw(self.back)
+    def add_text(self, text, font=None, color="#000000", position=None, vertical=False, horizon=False, mode=None):
+        draw = ImageDraw.Draw(self.back, mode)
         size = position[2]
-        ft = ImageFont.truetype(font, size) if font else None
-        x = position[0]
-        if horizon:
-            x = len_of_str(text, size)
-        draw.text([x, position[1]], unicode(text, 'utf-8'), font=ft, fill=color)
+        ft = ImageFont.truetype(font, size) if font else ''
+
+        x = (self.size[0] - self.textsize(text, size, ft, mode)[0]) / 2 if horizon else position[0]
+        y = (self.size[1] - self.textsize(text, size, ft, mode)[1]) / 2 if vertical else position[1]
+
+        draw.text([x, y], unicode(text, 'utf-8'), font=ft, fill=color)
         return True
+
+    def add_mul_text(self, text, font=None, color="#000000", position=None, mode=None, spacing=4, align="center"):
+        draw = ImageDraw.ImageDraw(self.back, mode)
+        return draw.multiline_text(position, text, fill=color, font=font, anchor=None, spacing=spacing, align=align)
+
+    def textsize(self, text, font_size, font=None, mode=None):
+        ft = ImageFont.truetype(font, font_size) if font else None
+        return ImageDraw.ImageDraw(self.back, mode).textsize(unicode(text), font=ft)
 
     def save(self):
         self.poster.save(self.save_path)
         return True
-
-
-def len_of_str(text, font_size):
-    pattern = re.compile(u'[\u4e00-\u9fa5]')
-    len_c = len(pattern.findall(unicode(text)))
-    len_o = len(text) - len_c
-    return float(font_size * len_c + font_size * len_o / 2) / 2
