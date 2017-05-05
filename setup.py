@@ -6,7 +6,7 @@ with open('README.rst', encoding='utf-8') as fp:
     readme = fp.read()
 setup(
     name='PIC',
-    version='0.0.8',
+    version='0.0.9',
     packages=find_packages(),
     install_requires=['pillow'],
     url='https://github.com/DxqS/PIC',
