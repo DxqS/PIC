@@ -44,7 +44,7 @@ class Poster(object):
     def add_text(self, text, font=None, color="#000000", position=None, vertical=False, horizon=False, mode=None):
         draw = ImageDraw.Draw(self.back, mode)
         size = position[2]
-        ft = ImageFont.truetype(font, size) if font else ''
+        ft = ImageFont.truetype(font, size) if font else font
 
         x = (self.size[0] - self.textsize(text, size, ft, mode)[0]) / 2 if horizon else position[0]
         y = (self.size[1] - self.textsize(text, size, ft, mode)[1]) / 2 if vertical else position[1]
