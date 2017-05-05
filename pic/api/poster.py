@@ -4,7 +4,6 @@ Created on 2017/5/3.
 
 @author: Dxq
 '''
-import re
 from PIL import Image, ImageDraw, ImageFont
 
 
