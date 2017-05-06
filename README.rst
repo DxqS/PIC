@@ -1,4 +1,4 @@
-pic: Python Image Composition用 Python 实现图片合成
+Python Image Composition用 Python 实现图片合成
 ==============================
 
 海报生成API，基于 PIL，全面优化接口，更有 Python 范儿。
