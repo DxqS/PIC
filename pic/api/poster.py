@@ -41,10 +41,12 @@ class Poster(object):
         # back.save(self.save_path)
         return True
 
-    def add_text(self, text, font=None, color="#000000", position=None, vertical=False, horizon=False, mode=None):
-        draw = ImageDraw.Draw(self.back, mode)
+    def add_text(self, text, font, color="#000000",
+                 position=None, vertical=False, horizon=False, mode=None):
+
+        draw = ImageDraw.ImageDraw(self.back, mode)
         size = position[2]
-        ft = ImageFont.truetype(font, size) if font else font
+        ft = ImageFont.truetype(font, size)
 
         x = (self.size[0] - self.textsize(text, size, ft, mode)[0]) / 2 if horizon else position[0]
         y = (self.size[1] - self.textsize(text, size, ft, mode)[1]) / 2 if vertical else position[1]
@@ -52,13 +54,19 @@ class Poster(object):
         draw.text([x, y], text, font=ft, fill=color)
         return True
 
-    def add_mul_text(self, text, font=None, color="#000000", position=None, mode=None, spacing=4, align="center"):
-        draw = ImageDraw.ImageDraw(self.back, mode)
-        return draw.multiline_text(position, text, fill=color, font=font, anchor=None, spacing=spacing, align=align)
+    def add_mul_text(self, text, font, color="#000000",
+                     position=None, vertical=False, horizon=False, mode=None,
+                     spacing=4, align="center"):
 
-    def textsize(self, text, font_size, font=None, mode=None):
-        ft = ImageFont.truetype(font, font_size) if font else None
-        return ImageDraw.ImageDraw(self.back, mode).textsize(text, font=ft)
+        draw = ImageDraw.ImageDraw(self.back, mode)
+        size = position[2]
+        ft = ImageFont.truetype(font, size) if font else font
+        x = (self.size[0] - self.textsize(text, ft, mode)[0]) / 2 if horizon else position[0]
+        y = (self.size[1] - self.textsize(text, ft, mode)[1]) / 2 if vertical else position[1]
+        return draw.multiline_text([x, y], text, fill=color, font=ft, anchor=None, spacing=spacing, align=align)
+
+    def textsize(self, text, font=None, mode=None):
+        return ImageDraw.ImageDraw(self.back, mode).textsize(text, font=font)
 
     def save(self):
         self.poster.save(self.save_path)
