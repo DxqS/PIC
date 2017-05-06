@@ -3,10 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to pic's documentation!
-===============================
-
-pic: Python Image Composition用 Python 实现图片合成
+Python Image Composition用 Python 实现图片合成
 ==============================
 
 海报生成API，基于 PIL，全面优化接口，更有 Python 范儿。
