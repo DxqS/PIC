@@ -71,3 +71,13 @@ class Poster(object):
     def save(self):
         self.poster.save(self.save_path)
         return True
+
+
+def blend(im1, im2, alpha, mode="RGB"):
+    """
+    both im1 and im2 must be the same mode and size
+    mode default RGB
+    """
+    im1 = Image.open(im1).convert(mode)
+    im2 = Image.open(im2).convert(mode)
+    return Image.blend(im1, im2, alpha)
