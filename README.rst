@@ -20,7 +20,7 @@ Python Image Composition用 Python 实现图片合成
 轻松安装
 ----------------
 
-**pic 适合任意版本python
+**pic 适合版本python3+
 
 可以通过以下方式安装
 
