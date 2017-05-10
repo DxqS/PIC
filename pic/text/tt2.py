@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw, ImageFont
 im = Image.open('poster_back.png')
 font = 'app.ttf'
 size = 50
-text = '打'
+text = '打大'
 ft = ImageFont.truetype(font, size)
 
 draw = ImageDraw.ImageDraw(im)
